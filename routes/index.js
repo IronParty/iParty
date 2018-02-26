@@ -1,9 +1,16 @@
 const express = require("express");
 const router = express.Router();
-const User = require("../models/User");
+const User = require("../models/User.js");
+const cookieParser = require('cookie-parser');
+const bodyParser   = require('body-parser');
+const layouts      = require('express-ejs-layouts');
+const mongoose     = require('mongoose');
+const session      = require('express-session');
+const MongoStore   = require('connect-mongo')(session);
 const bcrypt = require("bcrypt");
 const salt = bcrypt.genSaltSync(10);
 const passport   = require('passport');
+const flash = require('flash');
 const { ensureLoggedIn, ensureLoggedOut } = require('connect-ensure-login');
 
 
