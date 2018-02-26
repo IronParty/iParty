@@ -6,13 +6,8 @@ const cookieParser = require('cookie-parser');
 const bodyParser   = require('body-parser');
 const layouts      = require('express-ejs-layouts');
 const mongoose     = require('mongoose');
-<<<<<<< HEAD
 const flash        = require('flash')
 
-=======
-const passport     = require('passport');
-const User        = require("./models/User");
->>>>>>> ea51a4260640701be936498e768dadbedde19eff
 const bcrypt     = require('bcrypt');
 
 
