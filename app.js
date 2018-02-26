@@ -7,6 +7,8 @@ const bodyParser   = require('body-parser');
 const layouts      = require('express-ejs-layouts');
 const mongoose     = require('mongoose');
 
+const bcrypt     = require('bcrypt');
+
 
 mongoose.connect('mongodb://localhost/iparty');
 
