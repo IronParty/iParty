@@ -10,7 +10,6 @@ const mongoose     = require('mongoose');
 const session      = require('express-session');
 const MongoStore   = require('connect-mongo')(session);
 const passport     = require('passport');
-const flash = require('flash');
 const bcrypt     = require('bcrypt');
 
 
@@ -33,7 +32,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(layouts);
-app.use(require('flash')());
 
 //mongostore
 app.use(session({
