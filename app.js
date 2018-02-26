@@ -1,3 +1,4 @@
+const config = require ("./config");
 const express      = require('express');
 const path         = require('path');
 const favicon      = require('serve-favicon');
@@ -6,8 +7,10 @@ const cookieParser = require('cookie-parser');
 const bodyParser   = require('body-parser');
 const layouts      = require('express-ejs-layouts');
 const mongoose     = require('mongoose');
+const session      = require('express-session');
+const MongoStore   = require('connect-mongo')(session);
 const passport     = require('passport');
-const User        = require("./models/User");
+const flash = require('flash');
 const bcrypt     = require('bcrypt');
 
 
@@ -30,6 +33,19 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(layouts);
+app.use(require('flash')());
+
+//mongostore
+app.use(session({
+  secret: 'letsparty',
+  resave: false,
+  saveUninitialized: true,
+  store: new MongoStore( { mongooseConnection: mongoose.connection })
+}));
+
+//passport
+require ("./config/passport")(app)
+
 
 const index = require('./routes/index');
 app.use('/', index);
