@@ -13,7 +13,7 @@ const passport     = require('passport');
 const bcrypt     = require('bcrypt');
 
 
-// mongoose.connect('mongodb://localhost/iparty');
+mongoose.connect('mongodb://localhost/iparty');
 
 const app = express();
 
