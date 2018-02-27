@@ -7,9 +7,10 @@ const cookieParser = require('cookie-parser');
 const bodyParser   = require('body-parser');
 const layouts      = require('express-ejs-layouts');
 const mongoose     = require('mongoose');
-const session      = require('express-session');
-const MongoStore   = require('connect-mongo')(session);
-const passport     = require('passport');
+const flash        = require('flash');
+const GoogleStrategy = require("passport-google-oauth").OAuth2Strategy;
+
+
 const bcrypt     = require('bcrypt');
 
 mongoose.connect(process.env.DATABASE_URL)
@@ -33,19 +34,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(layouts);
 
-// //mongostore
-app.use(session({
-  secret: 'letsparty',
-  resave: false,
-  saveUninitialized: true,
-  store: new MongoStore( { mongooseConnection: mongoose.connection })
-}));
-
-// //passport
-app.use(passport.initialize());
-app.use(passport.session()); 
-require ("./config/passport")(app)
-
+require ('./config/passport')(app)
 
 const index = require('./routes/index');
 const companies = require('./routes/companies')
