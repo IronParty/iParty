@@ -72,4 +72,9 @@ router.post("/logout", ensureLoggedIn("/login"), (req, res) => {
   res.redirect("/");
 });
 
+router.get('/', function(req, res, next) {
+  res.render('index', { title: 'iParty' });
+});
+
+
 module.exports = router;

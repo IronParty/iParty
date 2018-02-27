@@ -6,10 +6,9 @@ const companySchema = new Schema({
   owner: {type: String},
   media: [{type: String}],
   description: {type: String},
-  price: {type: String},
-  phone: {type: String},
+  price: {type: Number},
+  phone: {type: Number},
   schedule: {type: String},
-  reviews: [{type: String}]
 });
 
 const Company = mongoose.model('Company', companySchema);
