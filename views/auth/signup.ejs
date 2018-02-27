@@ -3,7 +3,7 @@
 
 <form action="/signup" method="POST" id="form-container">
     <label for="username">Username</label>
-    <input id="username" type="text" name="username" placeholder="JonSnow">
+    <input id="username" type="text" name="username" placeholder="Your Username">
     <br><br>
     <label for="password">Password</label>
     <input id="password" type="password" name="password" placeholder="Your password">
@@ -17,11 +17,12 @@
 
     <button>Create account</button>
 
-    <p class="account-message">
-        Do you already have an account?
-        <a href="/login">Login</a>
-    </p>
 </form>
+<p>Or Sign up in with</p>
+<button type="button" class="btn btn-fb"><i class="fa fa-facebook pr-1"></i> Facebook</button>
+<button type="button" class="btn btn-gplus"><i class="fa fa-google-plus pr-1"></i> Google +</button>
 
-<a href="/auth/facebook">Sign up With Facebook</a>
-<a href="/auth/google">Sign up With Google</a>
+<p class="account-message">
+    Do you already have an account?
+    <a href="/login">Login</a>
+</p>
