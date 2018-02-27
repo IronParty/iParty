@@ -6,9 +6,9 @@ const userSchema = new Schema({
   password   : {type: String },
   email: {type: String},
   cart: {type: String},
-  _id: {type: String},
   picPath: {type: String},
-  rol:{type: String}
+  rol:{type: String},
+  googleID:String
 });
 
 const User = mongoose.model('User', userSchema);

@@ -3,6 +3,7 @@ const User               = require('../models/User');
 const bcrypt             = require('bcrypt');
 const passport = require ("passport");
 const FbStrategy = require('passport-facebook').Strategy;
+const GoogleStrategy = require("passport-google-oauth").OAuth2Strategy;
 
 module.exports = function (app) {
   // NEW
@@ -69,7 +70,7 @@ module.exports = function (app) {
 
   passport.use(new FbStrategy({
     clientID: "356855454794351",
-    clientSecret: "iParty",
+    clientSecret: "81d248af1e15f5bc25ec4fb06181e3cc",
     callbackURL: "/auth/facebook/callback"
   }, (accessToken, refreshToken, profile, done) => {
     User.findOne({ facebookID: profile.id }, (err, user) => {
@@ -82,6 +83,33 @@ module.exports = function (app) {
   
       const newUser = new User({
         facebookID: profile.id
+      });
+  
+      newUser.save((err) => {
+        if (err) {
+          return done(err);
+        }
+        done(null, newUser);
+      });
+    });
+  
+  }));
+
+  passport.use(new GoogleStrategy({
+    clientID: "25522018266-1ho2pj55mncj08lnjk5b2de6smmip8cd.apps.googleusercontent.com",
+    clientSecret: "t1rvwXk7QLjc3xnrFFzaqMoA",
+    callbackURL: "/auth/google/callback"
+  }, (accessToken, refreshToken, profile, done) => {
+    User.findOne({ googleID: profile.id }, (err, user) => {
+      if (err) {
+        return done(err);
+      }
+      if (user) {
+        return done(null, user);
+      }
+  
+      const newUser = new User({
+        googleID: profile.id
       });
   
       newUser.save((err) => {

@@ -4,7 +4,7 @@
 
 <form action="/signup" method="POST" id="form-container">
     <label for="username">Username</label>
-    <input id="username" type="text" name="username" placeholder="JonSnow">
+    <input id="username" type="text" name="username" placeholder="Your Username">
     <br><br>
     <label for="password">Password</label>
     <input id="password" type="password" name="password" placeholder="Your password">
@@ -18,11 +18,52 @@
 
     <button>Create account</button>
 
-    <p class="account-message">
-        Do you already have an account?
-        <a href="/login">Login</a>
-    </p>
 </form>
+<p>Or Sign up in with</p>
+<a href = "/auth/facebook"<button type= "button" class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"> Facebook</button></a>
+<!-- <button type="button" class="btn btn-gplus"><i class="fa fa-google-plus pr-1"></i> Google +</button> -->
 
-<a href="/auth/facebook">Sign up With Facebook</a>
-<a href="/auth/google">Sign up With Google</a>
+
+<html>
+<head>
+  <meta name="google-signin-client_id" content="YOUR_CLIENT_ID.apps.googleusercontent.com">
+</head>
+<body>
+  <div id="my-signin2"></div>
+  <script>
+    function onSuccess(googleUser) {
+      console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
+    }
+    function onFailure(error) {
+      console.log(error);
+    }
+    function renderButton() {
+      gapi.signin2.render('my-signin2', {
+        'scope': 'profile email',
+        'width': 240,
+        'height': 50,
+        'longtitle': true,
+        'theme': 'dark',
+        'onsuccess': onSuccess,
+        'onfailure': onFailure
+      });
+    }
+  </script>
+
+
+
+<p class="account-message">
+    Do you already have an account?
+    <a href="/login">Login</a>
+</p>
+
+
+
+  <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
+</body>
+</html>
+
+<div id="fb-root"></div>
+<a href="/auth/facebook">Login With Facebook</a>
+
+<a href="/auth/google">google login</a>
