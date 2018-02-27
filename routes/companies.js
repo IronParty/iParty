@@ -1,8 +1,8 @@
 var express = require('express');
 var router = express.Router();
 
-router.get('/comments', function(req, res, next) {
-  res.send('comments');
+router.get('/company', function(req, res, next) {
+  res.render('company');
 });
 
 module.exports = router;
