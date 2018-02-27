@@ -9,10 +9,11 @@ const layouts      = require('express-ejs-layouts');
 const mongoose     = require('mongoose');
 const flash        = require('flash')
 
+
 const bcrypt     = require('bcrypt');
 
 
-// mongoose.connect('mongodb://localhost/iparty');
+mongoose.connect('mongodb://localhost/iparty');
 
 const app = express();
 

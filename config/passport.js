@@ -1,7 +1,8 @@
 const LocalStrategy      = require('passport-local').Strategy;
 const User               = require('../models/User');
 const bcrypt             = require('bcrypt');
-const passport = require ("passport")
+const passport = require ("passport");
+const FbStrategy = require('passport-facebook').Strategy;
 
 module.exports = function (app) {
   // NEW
@@ -64,34 +65,34 @@ module.exports = function (app) {
       return next(null, user);
     });
   }));
-  //facebook strategy
+  
 
-  // passport.use(new FbStrategy({
-  //   clientID: "your Facebook client id here",
-  //   clientSecret: "your Facebook client secret here",
-  //   callbackURL: "/auth/facebook/callback"
-  // }, (accessToken, refreshToken, profile, done) => {
-  //   User.findOne({ facebookID: profile.id }, (err, user) => {
-  //     if (err) {
-  //       return done(err);
-  //     }
-  //     if (user) {
-  //       return done(null, user);
-  //     }
+  passport.use(new FbStrategy({
+    clientID: "356855454794351",
+    clientSecret: "iParty",
+    callbackURL: "/auth/facebook/callback"
+  }, (accessToken, refreshToken, profile, done) => {
+    User.findOne({ facebookID: profile.id }, (err, user) => {
+      if (err) {
+        return done(err);
+      }
+      if (user) {
+        return done(null, user);
+      }
   
-  //     const newUser = new User({
-  //       facebookID: profile.id
-  //     });
+      const newUser = new User({
+        facebookID: profile.id
+      });
   
-  //     newUser.save((err) => {
-  //       if (err) {
-  //         return done(err);
-  //       }
-  //       done(null, newUser);
-  //     });
-  //   });
+      newUser.save((err) => {
+        if (err) {
+          return done(err);
+        }
+        done(null, newUser);
+      });
+    });
   
-  // }));
+  }));
   // NEW
   
   app.use(passport.initialize());

@@ -42,5 +42,11 @@ router.post('/logout', ensureLoggedIn('/login'), (req, res) => {
     res.redirect('/');
 });
 
+router.get("/auth/facebook", passport.authenticate("facebook"));
+router.get("/auth/facebook/callback", passport.authenticate("facebook", {
+  successRedirect: "/private-page",
+  failureRedirect: "/"
+}));
+
 
 module.exports = router;
