@@ -4,7 +4,7 @@ const Schema   = mongoose.Schema;
 const reviewSchema = new Schema({
   userName : {type: String ,trim:true },
   productId: {type: String},
-  body: {type: String},
+  description: {type: String},
   rate: {type: Number},
   timestamps: { 
     createdAt: "created_at", 

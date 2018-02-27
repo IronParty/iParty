@@ -43,18 +43,12 @@ app.use(session({
 
 // //passport
 app.use(passport.initialize());
-app.use(passport.session());
-// passport.use(new LocalStrategy(User.authenticate()));
-// passport.serializeUser(User.serializeUser());
-// passport.deserializeUser(User.deserializeUser());
+app.use(passport.session()); 
 require ("./config/passport")(app)
 
 
-// const index = require('./routes/index');
-// app.use('/', index);
-app.get('/', (req, res) => {
-  res.render("index");
-});
+const index = require('./routes/index');
+app.use('/', index);
 
 // // catch 404 and forward to error handler
 app.use((req, res, next) => {
