@@ -1,0 +1,19 @@
+<h1><%=company.title%></h1>
+<img width="350" src="<%=company.media[0]%>" alt="<%=company.title%>">
+<p><%=company.description%></p>
+<h3>$<%=company.price%></h3>
+
+<%=reviews.forEach(function(review){%>
+<hr>
+<p><%=review.userName%></p>
+<span><%=review.date%></span>
+<p><%=review.description%></p>
+<%})%>
+
+<!-- <form action="/reviews/new">
+    <input type="text" placeholder="Tu nombre" name="userName">
+    <br>
+    <textarea type="text" placeholder="Tu comentario" name="body"></textarea>
+    <input value="<%=company._id%>" type="hidden" name="companyID">
+    <input type="submit">
+</form> -->

@@ -1,4 +1,4 @@
-<div class="centered">
+<div class="container-fluid">
         <h2>Log in</h2>
 <form action="/signup" method="POST" id="form-container">
     <label for="username">Username</label>
@@ -20,16 +20,15 @@
     </p>
 </form>
 <p>Or Login in with</p>
-<fb:login-button 
-scope="public_profile,email"
-onlogin="checkLoginState();">
-</fb:login-button>
-  <button type="button" class="btn btn-gplus"><i class="fa fa-google-plus pr-1"></i> Google +</button>
+<a href="/auth/facebook">Login With Facebook</a>
+
+<a href="/auth/google">google login</a>
   
   <div class="dropdown-divider"></div>
-  <p>
-  <a class="dropdown-item" href="#">New around here? Sign up</a> Or 
-  <a class="dropdown-item" href="#">Forgot password?</a>
+  <p>New around here?
+  <a href="/signup"> Sign up</a> Or 
+  <a href="#">Forgot password?</a>
+
 </p>
 </div>
 </div>

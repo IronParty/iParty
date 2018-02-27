@@ -3,13 +3,12 @@ const Schema   = mongoose.Schema;
 
 const companySchema = new Schema({
   title: {type: String},
-  description: {type: String},
-  images: [{type: String}],
   owner: {type: String},
-  price: {type: String},
-  phone: {type: String},
+  media: [{type: String}],
+  description: {type: String},
+  price: {type: Number},
+  phone: {type: Number},
   schedule: {type: String},
-  reviews: [{type: String}]
 });
 
 const Company = mongoose.model('Company', companySchema);

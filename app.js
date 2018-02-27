@@ -1,4 +1,4 @@
-// const config = require ("./config");
+require('dotenv').config()
 const express      = require('express');
 const path         = require('path');
 const favicon      = require('serve-favicon');
@@ -13,8 +13,8 @@ const GoogleStrategy = require("passport-google-oauth").OAuth2Strategy;
 
 const bcrypt     = require('bcrypt');
 
-
-mongoose.connect('mongodb://localhost/iparty');
+mongoose.connect(process.env.DATABASE_URL)
+  .then(console.log(`connected to  ${process.env.DATABASE_URL}`))
 
 const app = express();
 
@@ -37,7 +37,9 @@ app.use(layouts);
 require ('./config/passport')(app)
 
 const index = require('./routes/index');
+const companies = require('./routes/companies')
 app.use('/', index);
+app.use('/company', companies);
 
 // // catch 404 and forward to error handler
 app.use((req, res, next) => {
@@ -56,6 +58,7 @@ app.use((err, req, res, next) => {
   res.status(err.status || 500);
   res.render('error');
 });
+
 
 
 module.exports = app;
