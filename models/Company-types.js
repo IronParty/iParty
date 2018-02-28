@@ -1,7 +1,7 @@
 module.exports = [
-    "Hall",
-    "Photography",
-    "Music",
-    "Flowers",
-    "Coreographyh"
-    ];  
+  "Hall",
+  "Photography",
+  "Music",
+  "Flowers",
+  "Choreography"
+  ];

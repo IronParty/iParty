@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div class="container">
     <div class="row">
       <div class="col-sm-6 centered-form">
@@ -26,3 +27,20 @@
     </div>
   </div>
   
+=======
+<ul>
+    <%companies.forEach(function(company){ %>
+    <li>
+        <a href="/company/<%=company._id%>">
+            <h2>Titulo: <%=company.title%></h2>
+        </a>
+            <img width="100" src="<%=company.media[0] %>" alt="<%=company.title%>" >
+            <h3>Price: $<%=company.price%></h3>
+            <h4>Reviews:</h4>
+            <%companies.forEach(function(company){ %>
+                <%=reviews%>
+            <%})%>
+        </li>
+        <%})%>
+    </ul>
+>>>>>>> 5f62ab505244f1ff5494f2d11e5f046a0d2bbae2
