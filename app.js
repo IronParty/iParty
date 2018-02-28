@@ -42,6 +42,7 @@ app.use(session({
   store: new MongoStore( { mongooseConnection: mongoose.connection })
 }));
 
+app.use(flash());
 
 require ('./config/passport')(app)
 
@@ -57,7 +58,7 @@ const reviewController = require('./routes/reviews')
 app.use('/', index);
 app.use('/', authController);
 app.use('/user', userController);
-app.use('/company', companiesController);
+app.use('/companies', companiesController);
 app.use('/review', reviewController);
 
 

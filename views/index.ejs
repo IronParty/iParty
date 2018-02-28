@@ -2,14 +2,16 @@
 <h3>Welcome to <h1><%= title %></h1></h3>
 
 <h3>Start your party planning here!</h3>
-
-<select>
-  <option value="Hall">Hall</option>
+<form action="/companies">
+<select name='category'>
+  <option value="hall">Hall</option>
   <option value="photography">Photography</option>
   <option value="music">Music</option>
   <option value="flowers">Flowers</option>
   <option value="other">Other</option>
 </select>
+<input type="submit">
+</form>
 
 <div style="width:500px" id="iparty" id="map"></div> 
     <script

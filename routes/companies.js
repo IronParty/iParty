@@ -29,8 +29,13 @@ router.post('/new', ensureLoggedIn('/login'),(req, res, next) => {
     .catch(err => console.log(err));
 });
 
-router.get('/all/:category', (req, res) => {
-  res.render('companies/:category', { types: TYPES });
+router.get('/', (req, res) => {
+  Company.find({category:req.query.category})
+  .then(companies=>{
+    //res.render('companies', {companies});
+    res.json(companies);
+  })
+  .catch(err=>res.send(err));
 });
 
 router.post('/all/:category', (req, res) => {

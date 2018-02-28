@@ -11,10 +11,12 @@ const { ensureLoggedIn, ensureLoggedOut } = require('connect-ensure-login');
 
 
 router.get("/login", ensureLoggedOut(), (req, res) => {
+  if(req.isAuthenticated() )return res.send(req.user);
     res.render("auth/login");
+ 
   });
   
-  router.post("/login", ensureLoggedOut(),
+  router.post("/login",
     passport.authenticate("local-login", {
       successRedirect: "/",
       failureRedirect: "/login",
@@ -35,9 +37,9 @@ router.get("/login", ensureLoggedOut(), (req, res) => {
   );
 
 
-router.post("/logout", ensureLoggedIn("/login"), (req, res) => {
+router.get("/logout", ensureLoggedIn('/login'), (req, res) => {
     req.logout();
-    res.redirect("/");
+    res.redirect("/login");
   });
 
 router.get("/auth/facebook", passport.authenticate("facebook"));
