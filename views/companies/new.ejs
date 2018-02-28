@@ -1,8 +1,13 @@
 <section>
-    <h2>Upload your photo</h2>
-    <form action="/upload" method="post" enctype="multipart/form-data">
-        <input placeholder="nombre del archivo" type="text" name="name">
-        <input type="file" name="photo" accept="image/*">
+    <h2>Please create your profile, <br>
+        and Showcase yourself! YEAAAH</h2>
+    <form action="/company/new" method="post">
+        <input placeholder="Title" type="text" name= "Title"> <br>
+        <input placeholder="Discription" type="text" name= "Discription"> <br>
+        <input placeholder="Price" type="text" name= "Price"> <br>
+        <input placeholder="Email" type="text" name= "Email"> <br>
+        <input type = "text" placeholder="Link to your calender" type="text" name= "Calendar"> <br>
+        <input placeholder="Upload your media below" type="text" name="Media"> <br>
         <input type="submit" value="Save">
     </form>
 </section>

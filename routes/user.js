@@ -1,11 +1,12 @@
-router.get('/:id', function(req, res, next) {
-    res.render('user_id',user);
+const express = require("express");
+const router = express.Router();
+const { ensureLoggedIn, ensureLoggedOut } = require('connect-ensure-login');
+
+router.get("/profile", ensureLoggedIn("/login"), (req, res) => {
+    res.render("auth/profile", {
+      user: req.user
+    });
   });
-  
-  router.get('/:id/edit', function(req, res, next) {
-    res.render('user_id',user);
-  });
-  
-  router.post('/:id/edit', function(req, res, next) {
-    res.render('user_id',user);
-  });
+
+
+  module.exports = router;
