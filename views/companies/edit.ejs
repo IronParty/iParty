@@ -1,8 +1,33 @@
-<section>
-    <h2>Upload your photo</h2>
-    <form action="/upload" method="post" enctype="multipart/form-data">
-      <input placeholder="nombre del archivo" type="text" name="name">
-      <input type="file" name="photo" accept="image/*">
-      <input type="submit" value="Save">
+<section class="form-company-update">
+    <h2>Edit Your Company</h2>
+    <form id="edit-user-form" class="user-form">
+      <div class="field">
+        <label for="name">Name: </label>
+        <input type="text" name="name">
+      </div>
+      <div class="field">
+        <label for="email">Email: </label>
+        <input type="text" name="email">
+      </div>
+      <div class="field">
+        <label for="description">Description: </label>
+        <input type="text" name="description">
+      </div>
+      <div class="field">
+        <label for="price">Price: </label>
+        <input type="text" name="price">
+      </div>
+      <div class="field">
+        <label for="calendar">Calendar link: </label>
+        <input type="text" name="calendar">
+      </div>
+      <h2>Upload your photo</h2>
+      <form action="/upload" method="post" enctype="multipart/form-data">
+        <input placeholder="nombre del archivo" type="text" name="name">
+        <input type="file" name="photo" accept="image/*">
+        <input type="submit" value="Save">
+      </form>
+      <button id="edit-submit" class="submit-button">Update</button>
     </form>
   </section>
+</section>
