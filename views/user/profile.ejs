@@ -1,0 +1,10 @@
+<h1>Hi <%=user.userName%>!</h1>
+<img width="350" src="<%=user.pic[0]%>" alt="<%=user.userName%>">
+<p><%=user.email%></p>
+
+<%=user.forEach(function(order){%>
+<hr>
+<p><%=order.userName%></p>
+<span><%=review.date%></span>
+<p><%=review.description%></p>
+<%})%>

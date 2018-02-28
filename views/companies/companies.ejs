@@ -1,7 +1,7 @@
 <ul>
-        <%companies.forEach(function(company){ %>
-        <li>
-            <a href="/company/<%=company._id%>">
+    <%companies.forEach(function(company){ %>
+    <li>
+        <a href="/company/<%=company._id%>">
             <h2>Titulo: <%=company.title%></h2>
         </a>
             <img width="100" src="<%=company.media[0] %>" alt="<%=company.title%>" >

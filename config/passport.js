@@ -42,7 +42,7 @@ module.exports = function (app) {
                     description,
                     password: hashPass
                   });
-  
+                  console.log(newUser);
                   newUser.save((err) => {
                       if (err){ next(err); }
                       return next(null, newUser);
