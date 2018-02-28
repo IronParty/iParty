@@ -8,9 +8,9 @@ const companySchema = new Schema({
   media: [{type: String}],
   description: {type: String},
   price: {type: Number},
-  phone: {type: Number},
+  email: {type: String},
   schedule: {type: String},
-  category: { type: String, enum: TYPES, required: true},
+  category: { type: String, enum: TYPES},
 });
 
 const Company = mongoose.model('Company', companySchema);
