@@ -8,5 +8,4 @@ router.get("/profile", ensureLoggedIn("/login"), (req, res) => {
     });
   });
 
-
   module.exports = router;

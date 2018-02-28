@@ -8,7 +8,8 @@ const bodyParser   = require('body-parser');
 const layouts      = require('express-ejs-layouts');
 const mongoose     = require('mongoose');
 const flash        = require('flash');
-const GoogleStrategy = require("passport-google-oauth").OAuth2Strategy;
+const session      = require('express-session');
+const MongoStore   = require('connect-mongo')(session);
 
 
 const bcrypt     = require('bcrypt');
@@ -33,6 +34,14 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(layouts);
+
+app.use(session({
+  secret: 'ironfundingdev',
+  resave: false,
+  saveUninitialized: true,
+  store: new MongoStore( { mongooseConnection: mongoose.connection })
+}));
+
 
 require ('./config/passport')(app)
 
