@@ -4,7 +4,7 @@ body {
 }
 
 a {
-  color: #00B7FF;
+  color: #cfd4e6;
 }
 
 @mixin horizontalcenter(){
@@ -23,7 +23,7 @@ a {
   transform: translate(-50%, -50%);
 }
 
-div{
+/* div{
   position: absolute;
   box-sizing: border-box;
   margin: 0;
@@ -35,7 +35,7 @@ div{
     display: block;
     box-sizing: border-box;
   }
-}
+} */
 
 /*
 * BACKGROUNDS
@@ -70,4 +70,20 @@ body{
      /*3*/ color,
      /*4*/ overlay,
      /*5*/ normal;
+}
+
+.btn-primary{
+  background-color: #3d0571 !important;
+  border-color: #714bb3 !important;
+}
+
+/* a{
+  color: #2a3f80 !important;
+} */
+
+.cont{
+  vertical-align: middle;
+  margin: auto;
+  width: 50%;
+  text-align: center;
 }

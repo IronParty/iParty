@@ -1,19 +1,20 @@
-<div class="container-fluid">
+<div class="cont">
   <h2>Log in</h2>
+  <div class="dropdown-divider"></div>
 <form action="/login" method="POST" id="form-container">
 <label for="username">Username</label>
-<input id="username" type="text" name="username" placeholder="Your username">
+<input id="username" type="text" name="username">
 <br><br>
 <label for="password">Password</label>
-<input id="password" type="password" name="password" placeholder="Your password">
+<input id="password" type="password" name="password">
 <br><br>
-<div class="form-check">
+<!-- <div class="form-check">
   <input type="checkbox" class="form-check-input" id="dropdownCheck">
   <label class="form-check-label" for="dropdownCheck">
     Remember me
   </label>
   <br><br>
-</div>
+</div> -->
 <button type="submit" class="btn btn-primary">Log in</button>
 </form>
 <br>
@@ -23,12 +24,11 @@
 <a href="/auth/facebook">Login With Facebook</a>
 
 <a href="/auth/google">google login</a>
-
-<div class="dropdown-divider"></div>
+<br><br>
 <p>New around here?
 <a href="/signup"> Sign up</a> Or 
 <a href="#">Forgot password?</a>
-
+<div class="dropdown-divider"></div>
 </p>
 </div>
 </div>

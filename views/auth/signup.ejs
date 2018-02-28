@@ -1,24 +1,25 @@
-<h2>Welcome To iParty!
-</h2>
-
+<div class="cont">
+<h2>Welcome To iParty!</h2>
+<div class="dropdown-divider"></div>
 <form action="/signup" method="POST" id="form-container">
-    <label for="username">Username</label>
-    <input id="username" type="text" name="username" placeholder="Your Username">
+    <label for="username">Username:</label>
+    <input id="username" type="text" name="username">
     <br><br>
-    <label for="email">E-mail</label>
-    <input id="email" type="email" name="email" placeholder="e-mail">
+    <label for="email">E-mail:</label>
+    <input id="email" type="email" name="email">
     <br><br>
-    <label for="password">Password</label>
-    <input id="password" type="password" name="password" placeholder="Your password">
-    <label for="password">Confirm Password</label>
-    <input id="password" type="password" name="password2" placeholder="Confirm password">
+    <label for="password">Password:</label>
+    <input id="password" type="password" name="password">
+    <br><br>
+    <label for="password">Confirm Password:</label>
+    <input id="password" type="password" name="password2">
 
     <% if (typeof message !== "undefined") { %>
     <div class="error-message"><%= message %></div>
     <% } %>
     <br><br>
 
-    <button>Create account</button>
+    <button type="submit" class="btn btn-primary">Create account</button>
 
 </form>
 
@@ -36,3 +37,5 @@
 <a href="/auth/facebook">Login With Facebook</a>
 
 <a href="/auth/google">google login</a>
+<div class="dropdown-divider"></div>
+</div>
