@@ -6,6 +6,10 @@
         </a>
             <img width="100" src="<%=company.media[0] %>" alt="<%=company.title%>" >
             <h3>Price: $<%=company.price%></h3>
+            <h4>Reviews:</h4>
+            <%companies.forEach(function(company){ %>
+                <%=reviews%>
+            <%})%>
         </li>
         <%})%>
     </ul>
