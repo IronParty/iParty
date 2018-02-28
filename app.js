@@ -37,9 +37,20 @@ app.use(layouts);
 require ('./config/passport')(app)
 
 const index = require('./routes/index');
-const companies = require('./routes/companies')
+const userController = require('./routes/user')
+const authController = require('./routes/auth')
+const companiesController = require('./routes/companies')
+const reviewController = require('./routes/reviews')
+
+
+
+
 app.use('/', index);
-app.use('/company', companies);
+app.use('/', authController);
+app.use('/user', userController);
+app.use('/company', companiesController);
+app.use('/review', reviewController);
+
 
 // // catch 404 and forward to error handler
 app.use((req, res, next) => {
