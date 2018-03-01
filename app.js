@@ -53,6 +53,7 @@ const userController = require('./routes/user')
 const authController = require('./routes/auth')
 const companiesController = require('./routes/companies')
 const reviewController = require('./routes/reviews')
+const orderController = require('./routes/orders')
 
 
 
@@ -62,6 +63,7 @@ app.use('/', authController);
 app.use('/user', userController);
 app.use('/company', companiesController);
 app.use('/review', reviewController);
+app.use('/order', orderController);
 
 
 // // catch 404 and forward to error handler

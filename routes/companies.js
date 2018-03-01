@@ -3,16 +3,18 @@ const Company = require('../models/Company');
 const TYPES    = require('../models/Company-types');
 const router   = express.Router();
 const { ensureLoggedIn }  = require('connect-ensure-login');
-const {authorizeCompany, checkOwnership} = require ("../middlewares/authorizationCompany.js")
-
+const {authorizeCompany, checkOwnership} = require ("../middlewares/authorizationCompany.js");
+const multer = require ("multer");
+var upload = multer({ dest: './public/images/' });
 
 
 router.get('/new', (req, res) => {
   res.render('companies/new', { types: TYPES });
 });
 
-router.post('/new', ensureLoggedIn('/login'),(req, res, next) => {
+router.post('/new', ensureLoggedIn('/login'), upload.single("picture"),(req, res, next) => {
   console.log(req.body)
+  console.log(req.file.filename)
   const newCompany = new Company({
     title: req.body.title,
     description: req.body.description,
@@ -22,7 +24,8 @@ router.post('/new', ensureLoggedIn('/login'),(req, res, next) => {
     schedule:req.body.calendar,
     latitude : req.body.latitude,
     longitude:req.body.longitude,
-    owner: req.user._id
+    owner: req.user._id, 
+    media: `/images/${req.file.filename}`
 
   });
   console.log('llego aqui ')
@@ -62,7 +65,7 @@ router.get('/:id/edit', ensureLoggedIn('/login'), authorizeCompany, (req, res, n
   Company.findById(req.params.id, (err, campaign) => {
     if (err)       { return next(err) }
     if (!company) { return next(new Error("404")) }
-    return res.render('company/edit', { company, types: TYPES })
+    return res.render('companies/edit', { company, types: TYPES })
   });
 });
 

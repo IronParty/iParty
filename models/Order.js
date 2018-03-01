@@ -2,8 +2,8 @@ const mongoose = require('mongoose');
 const Schema   = mongoose.Schema;
 
 const orderSchema = new Schema({
-  userName : {type: String},
-  productId: {type: String},
+  usernameId : { type: Schema.Types.ObjectId, ref: 'User', required: true },
+  productId: { type: Schema.Types.ObjectId, ref: 'Company', required: true },
   timestamps: { 
     createdAt: "created_at", 
     updatedAt: "updated_at" 
