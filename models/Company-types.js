@@ -3,5 +3,6 @@ module.exports = [
   "Photography",
   "Music",
   "Flowers",
-  "Choreography"
+  "Choreography",
+  "Other"
   ];

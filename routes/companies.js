@@ -20,8 +20,9 @@ router.get('/new', (req, res) => {
   res.render('companies/new', { types: TYPES });
 });
 
-router.post('/new', ensureLoggedIn('/login'), upload.single("picture"),(req, res, next) => {
+router.post('/new', ensureLoggedIn('/login'), upload.single("photo"),(req, res, next) => {
   console.log(req.body)
+  console.log(req.user)
   console.log(req.file.filename)
   const newCompany = new Company({
     title: req.body.title,
