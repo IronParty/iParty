@@ -1,66 +1,47 @@
 function startMap() {
-    navigator.geolocation.getCurrentPosition(function(position) {
-        const center = {
-          lat: position.coords.latitude,
-          lng: position.coords.longitude
-        };
-        map.setCenter(center);
-        
-    var map = new google.maps.Map(document.getElementById("map"), {
+
+  var ironhackMEX = {
+      lat: 19.3975835,
+      lng: -99.1713595};
+  var map = new google.maps.Map(
+    document.getElementById('map'),
+    {
       zoom: 15,
-      center: center
+      center: ironhackMEX
     }
   );
+
+
+var myMarker = new google.maps.Marker({
+  position: ironhackMEX,
+  map: map,
+  label: "You are here",
+  draggable:true,
+ 
+});
+
+
+
+
+var input = document.getElementById("ricky");
+
+function autocomplete(input){
+  const dropdown = new google.maps.places.Autocomplete (input);
+  dropdown.addListener("place_changed", ()=>{
+      const place = dropdown.getPlace();
+      console.log(place.geometry.location.lat());
+      console.log(place.geometry.location.lng());
+      console.log(place);
+      const newCenter = {
+        lat: place.geometry.location.lat(),
+        lng: place.geometry.location.lng()
+      };
+      map.setCenter(newCenter);
+  })
   
-    var myMarker = new google.maps.Marker({
-      position: center,
-      map: map,
-      label: "You are here",
-      draggable: true,
-      animation: google.maps.Animation.DROP
-    });
+}
+  autocomplete(input);
+}
   
-    });
-  
-    var directionsService = new google.maps.DirectionsService;
-    var directionsDisplay = new google.maps.DirectionsRenderer;
-    
-    var directionRequest = {
-      origin: ironhackMEX,
-      destination: 'Alberta, Canadá',
-      travelMode: 'DRIVING'
-    };
-    
-    directionsService.route(
-      directionRequest,
-      function(response, status) {
-        if (status === 'OK') {
-          // everything is ok
-          directionsDisplay.setDirections(response);
-    
-        } else {
-          // something went wrong
-          window.alert('Directions request failed due to ' + status);
-        }
-      }
-    );
-    
-    directionsDisplay.setMap(map);
-  
-    var input = document.getElementById("iparty");
-  
-    function autocomplete(input){
-        const dropdown = new google.maps.places.Autocomplete(input);
-        dropdown.addListener("place_changed", ()=>{
-            const place = dropdown.getPlace();
-            console.log(place.geometry.location.lat());
-            console.log(place.geometry.location.lng());
-            console.log(place);
-        })
-  
-    }
-    autocomplete(input);
-  }
-  
-  startMap();
-  
+
+startMap()
