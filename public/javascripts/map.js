@@ -1,36 +1,68 @@
+
+var markers = [];
+
+function drawMarkers(locations, map){
+  locations.forEach(l=>{
+    markers.push(new google.maps.Marker({
+      map:map,
+      position:{lat:l.latitude, lng:l.longitude},
+      label:l.title
+    }))
+  });
+}
+
+
 function startMap() {
 
-  var ironhackMEX = {
+  var myLatLng = {
       lat: 19.3975835,
       lng: -99.1713595};
   var map = new google.maps.Map(
     document.getElementById('map'),
     {
       zoom: 15,
-      center: ironhackMEX
+      center: myLatLng
     }
   );
+  
+
+  fetch('/company/get-locations')
+  .then(response=>{
+    if(!response.ok) alert('fallo')
+    return response.json()
+  })
+  .then(locations=>{
+    drawMarkers(locations, map);
+  });
 
 
-var myMarker = new google.maps.Marker({
-  position: ironhackMEX,
-  map: map,
-  label: "You are here",
-  draggable:true,
- 
-});
 
 
 
+  marker = new google.maps.Marker({
+    map: map,
+    draggable: true,
+    animation: google.maps.Animation.DROP,
+    position:myLatLng,
+    // position: here i would put a an array of all lats and lngs stored in my database
+  });
+  marker.addListener('click', toggleBounce);
+}
 
+function toggleBounce() {
+  if (marker.getAnimation() !== null) {
+    marker.setAnimation(null);
+  } else {
+    marker.setAnimation(google.maps.Animation.BOUNCE);
+  }
+
+}
 var input = document.getElementById("ricky");
 
 function autocomplete(input){
   const dropdown = new google.maps.places.Autocomplete (input);
   dropdown.addListener("place_changed", ()=>{
       const place = dropdown.getPlace();
-      console.log(place.geometry.location.lat());
-      console.log(place.geometry.location.lng());
       document.getElementById("search-box-user-lat").value = place.geometry.location.lat()
       document.getElementById("search-box-user-lng").value = place.geometry.location.lng()
 
@@ -41,10 +73,12 @@ function autocomplete(input){
       };
       map.setCenter(newCenter);
   })
-  
+
 }
-  autocomplete(input);
-}
+autocomplete(input);
+
+ 
+
   
 
 startMap()

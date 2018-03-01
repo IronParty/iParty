@@ -5,7 +5,14 @@ const router   = express.Router();
 const { ensureLoggedIn }  = require('connect-ensure-login');
 const {authorizeCompany, checkOwnership} = require ("../middlewares/authorizationCompany.js")
 
-
+router.get('/get-locations', (req,res,next)=>{
+  Company.find({latitude:{$exists:true}})
+  .then(companies=>{
+    console.log(companies)
+    return res.json(companies);
+  })
+  .catch(err=>res.send(err));
+});
 
 router.get('/new', (req, res) => {
   res.render('companies/new', { types: TYPES });
