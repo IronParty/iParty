@@ -1,20 +1,24 @@
+html{
+  margin: 0;
+  padding: 0;
+}
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background-color: #001E4C;
 }
 
-a {
-  color: #cfd4e6;
+.cont>a{
+  color: #aa1779;
 }
 
 .cont{
-  width: 900px;
-  border-radius: 5px;
-  background-color: rgba(207, 207, 236, 0.6);
-  color: rgb(14, 7, 43);
-  margin: 50px auto;
-  padding: 50px;
+  width: 100%;
+  height: 100%;
+  /* border-radius: 5px; */
+  background-color: rgba(216, 216, 214, 0.6);
+  color: rgb(16, 10, 39);
+  margin: 50px 0;
+  padding: 50px 0;
   align-content: center;
   text-align: center;
   /* display: flex;
@@ -24,3 +28,8 @@ a {
 /* .navbar{
   display: flex;
 } */
+
+#map {
+  height: 500px;
+  width: 100%;
+ }

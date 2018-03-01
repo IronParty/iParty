@@ -35,6 +35,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(layouts);
 
+
 app.use(session({
   secret: 'ironfundingdev',
   resave: false,
@@ -43,6 +44,7 @@ app.use(session({
 }));
 
 app.use(flash());
+
 
 require ('./config/passport')(app)
 
@@ -58,7 +60,7 @@ const reviewController = require('./routes/reviews')
 app.use('/', index);
 app.use('/', authController);
 app.use('/user', userController);
-app.use('/companies', companiesController);
+app.use('/company', companiesController);
 app.use('/review', reviewController);
 
 
