@@ -11,6 +11,8 @@ const companySchema = new Schema({
   email: {type: String},
   schedule: {type: String},
   category: { type: String, enum: TYPES},
+  latitude: {type: Number},
+  longitude:{type: Number}
 });
 
 const Company = mongoose.model('Company', companySchema);

@@ -31,6 +31,9 @@ function autocomplete(input){
       const place = dropdown.getPlace();
       console.log(place.geometry.location.lat());
       console.log(place.geometry.location.lng());
+      document.getElementById("search-box-user-lat").value = place.geometry.location.lat()
+      document.getElementById("search-box-user-lng").value = place.geometry.location.lng()
+
       console.log(place);
       const newCenter = {
         lat: place.geometry.location.lat(),

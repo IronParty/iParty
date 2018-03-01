@@ -1,3 +1,12 @@
+<head>
+    <style>
+        #map {
+         height: 500px;
+         width: 100%;
+        }
+     </style>
+
+</head>
 <section class="cont">
     <h2>Please create your profile, <br>
         and Showcase yourself!</h2>
@@ -8,6 +17,31 @@
         <input placeholder="Email" type="text" name= "email"> <br>
         <input type = "text" placeholder="Link to your calender" type="text" name= "calendar"> <br>
         <input placeholder="Upload your media below" type="text" name="media"> <br>
+
+
+        <!-- <input id="search-box-user" type="text" name="where" placeholder="Search your location"> -->
+        <br>
+        <input style ="width:250px" id= "ricky" type="text">
+    <input type="submit" name="" id="ricky">
+
+        <input  id="search-box-user-lat" type="text" name="latitude" readonly>
+        <input  id="search-box-user-lng" type="text" name="longitude" readonly>
+        <br><br>
         <input type="submit" value="Save">
-    </form>
+   
+    <h3>Confirm your location on map</h3>
+<div id="map"></div>
+</form>
 </section>
+
+
+<script
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDEQxBrSwHxBiSTfLjK29OBcxI8JlQva-0
+&libraries=places">
+</script>
+
+<script type="text/javascript" src="/javascripts/map.js"></script>
+
+
+  
+    

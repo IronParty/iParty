@@ -20,7 +20,10 @@ router.post('/new', ensureLoggedIn('/login'),(req, res, next) => {
     email:req.body.email,
     category: req.body.category,
     schedule:req.body.calendar,
+    latitude : req.body.latitude,
+    longitude:req.body.longitude,
     owner: req.user._id
+
   });
   console.log('llego aqui ')
 

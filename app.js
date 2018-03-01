@@ -58,7 +58,7 @@ const reviewController = require('./routes/reviews')
 app.use('/', index);
 app.use('/', authController);
 app.use('/user', userController);
-app.use('/companies', companiesController);
+app.use('/company', companiesController);
 app.use('/review', reviewController);
 
 
