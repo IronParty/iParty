@@ -3,10 +3,23 @@ const Company = require('../models/Company');
 const TYPES    = require('../models/Company-types');
 const router   = express.Router();
 const { ensureLoggedIn }  = require('connect-ensure-login');
+<<<<<<< HEAD
 const {authorizeCompany, checkOwnership} = require ("../middlewares/authorizationCompany.js");
 const multer = require ("multer");
 var upload = multer({ dest: './public/images/' });
 
+=======
+const {authorizeCompany, checkOwnership} = require ("../middlewares/authorizationCompany.js")
+
+router.get('/get-locations', (req,res,next)=>{
+  Company.find({latitude:{$exists:true}})
+  .then(companies=>{
+    console.log(companies)
+    return res.json(companies);
+  })
+  .catch(err=>res.send(err));
+});
+>>>>>>> e4dd1ea4ad1efbdca4a949f3efb9c35805d2c461
 
 router.get('/new', (req, res) => {
   res.render('companies/new', { types: TYPES });
