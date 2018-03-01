@@ -3,12 +3,8 @@ const Company = require('../models/Company');
 const TYPES    = require('../models/Company-types');
 const router   = express.Router();
 const { ensureLoggedIn }  = require('connect-ensure-login');
-<<<<<<< HEAD
-const {authorizeCompany, checkOwnership} = require ("../middlewares/authorizationCompany.js");
-const multer = require ("multer");
-var upload = multer({ dest: './public/images/' });
-
-=======
+const multer = require('multer');
+const upload = multer({ dest: '../images/uploads/' })
 const {authorizeCompany, checkOwnership} = require ("../middlewares/authorizationCompany.js")
 
 router.get('/get-locations', (req,res,next)=>{
@@ -19,7 +15,6 @@ router.get('/get-locations', (req,res,next)=>{
   })
   .catch(err=>res.send(err));
 });
->>>>>>> e4dd1ea4ad1efbdca4a949f3efb9c35805d2c461
 
 router.get('/new', (req, res) => {
   res.render('companies/new', { types: TYPES });
@@ -68,6 +63,15 @@ router.post('/all/:category', (req, res) => {
   res.render('companies/:category', { types: TYPES });
 });
 
+router.get('/own', (req, res)=>{
+  console.log('cochinada')
+  Company.find({owner:req.user._id})
+  .then(company=>{
+    return res.render("companies/single",{company})
+  })
+  .catch(err=>res.send(err));
+});
+
 router.get('/:id' , (req, res, next) => {
   Company.findById(req.params.id)
     .populate("_owner")
@@ -81,5 +85,8 @@ router.get('/:id/edit', ensureLoggedIn('/login'), authorizeCompany, (req, res, n
     return res.render('companies/edit', { company, types: TYPES })
   });
 });
+
+
+
 
 module.exports = router;
