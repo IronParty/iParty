@@ -1,0 +1,12 @@
+<div class="cont">
+    <ul>
+        <%companies.forEach(function(company){ %>
+        <li>
+            <a href="/company/<%=company.category%>">
+                <h2>Titulo: <%=company.title%></h2>
+            </a>
+                <h3>Price: $<%=company.price%></h3>
+         </li>
+            <%})%>
+        </ul>
+    </div>

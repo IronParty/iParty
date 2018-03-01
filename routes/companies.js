@@ -4,7 +4,7 @@ const TYPES    = require('../models/Company-types');
 const router   = express.Router();
 const { ensureLoggedIn }  = require('connect-ensure-login');
 const multer = require('multer');
-const upload = multer({ dest: '../images/uploads/' })
+const upload = multer({ dest: './public/images' })
 const {authorizeCompany, checkOwnership} = require ("../middlewares/authorizationCompany.js")
 
 router.get('/get-locations', (req,res,next)=>{
@@ -60,6 +60,9 @@ router.get("/all", (req, res)=>{
   });
 });
 
+router.get('/all/:category', (req, res) => {
+  res.render('companies/cathegory/:category', { types: TYPES });
+});
 
 router.post('/all/:category', (req, res) => {
   res.render('companies/:category', { types: TYPES });
