@@ -44,7 +44,7 @@ router.get("/logout", ensureLoggedIn('/login'), (req, res) => {
 
 router.get("/auth/facebook", passport.authenticate("facebook"));
 router.get("/auth/facebook/callback", passport.authenticate("facebook", {
-  successRedirect: "/private-page",
+  successRedirect: "/user/profile",
   failureRedirect: "/"
 }));
 
@@ -55,7 +55,7 @@ router.get("/auth/google", passport.authenticate("google", {
 
 router.get("/auth/google/callback", passport.authenticate("google", {
   failureRedirect: "/",
-  successRedirect: "/private-page"
+  successRedirect: "/user/profile"
 }));
 
 module.exports = router;
