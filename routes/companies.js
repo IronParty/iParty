@@ -35,17 +35,22 @@ router.post('/new', ensureLoggedIn('/login'),(req, res, next) => {
 router.get('/', (req, res) => {
   Company.find({category:req.query.category})
   .then(companies=>{
-    //res.render('companies', {companies});
+    res.render('index', {companies});
     res.json(companies);
   })
   .catch(err=>res.send(err));
 });
 
-router.post('/all/:category', (req, res) => {
-  res.render('companies/:category', { types: TYPES });
+router.get("/all", (req, res)=>{
+  Company.find({}, (err, docs)=>{
+    res.render("companies/companies", {companies:docs});
+  });
 });
 
 
+router.post('/all/:category', (req, res) => {
+  res.render('companies/:category', { types: TYPES });
+});
 
 router.get('/:id' , (req, res, next) => {
   Company.findById(req.params.id)
