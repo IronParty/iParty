@@ -1,17 +1,16 @@
 <div class="cont">
     <div class="company-row row">
-        <h3 class="text-center">You may be interested in...</h3>
-        <% companies.forEach((company) => { %>
+        <h3 class="text-center">This is your cart</h3>
           <div class="col-sm-3 home-company-box">
-            <img src="<%= company.image %>">
+            <a class="title" href="/company/<%= company._id %>">aefha</a>
             <div class="company-info-wrapper">
-              <a class="title" href="/company/<%= company._id %>">
-                <strong><%= company.title %></strong>
-              </a><br>
+            <strong><%= company.title %></strong>
+            <img src="<%= company.image %>">
+              <br>
               by <span class="light-text"><%= company._creator.username %></span><br>
               <span class="light-text description"><%= company.description %></span>
             </div>
           </div>
-        <%  }) %>
+
       </div>
 </div>
