@@ -45,10 +45,11 @@ router.post('/new', ensureLoggedIn('/login'), upload.single("photo"),(req, res, 
 });
 
 router.get('/', (req, res) => {
+  console.log("entro a buscar con query's")
+  console.log(req.query.category)
   Company.find({category:req.query.category})
   .then(companies=>{
-    res.render('index', {companies});
-    res.json(companies);
+    res.render('company', {companies});
   })
   .catch(err=>res.send(err));
 });
@@ -65,7 +66,7 @@ router.post('/all/:category', (req, res) => {
 });
 
 router.get('/own', (req, res)=>{
-  console.log('cochinada')
+  console.log('own company')
   Company.find({owner:req.user._id})
   .then(company=>{
     return res.render("companies/single",{company})

@@ -3,16 +3,14 @@ const router = express.Router();
 const Companies = require("../models/Company")
 
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'iParty' });
+  res.render('index')
 });
 
 router.get('/', function(req, res, next) {
   Companies.find()
-    .then(respuesta =>  res.render("index",{companies:respuesta}))
+    .then(respuesta =>  res.redirect("companies",{companies:respuesta}))
     .catch(err => res.render("error"));
 });
-
-
 
 module.exports = router;
 

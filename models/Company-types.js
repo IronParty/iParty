@@ -1,8 +1,8 @@
 module.exports = [
-  "Hall",
-  "Photography",
-  "Music",
-  "Flowers",
-  "Choreography",
-  "Other"
+  "hall",
+  "photography",
+  "music",
+  "flowers",
+  "phoreography",
+  "other"
   ];
