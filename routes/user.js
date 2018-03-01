@@ -19,22 +19,4 @@ router.get("/profile", ensureLoggedIn("/login"), (req, res) => {
     })
     .catch(err=>res.send("error"+err));
   });
-
-
-
-  // document.getElementById('edit-user-form').onsubmit = function(e){
-  //   e.preventDefault();
-  //   var oneUser = {
-  //     name:e.target.name.value,
-  //     email:e.target.email.value
-  //   };
-  //   charactersAPI.updateOneRegister(oneUser)
-  //   .then(r=>{
-  //     $("#edit-submit");
-  //   })
-  //   .catch(r=>{
-  //     $("#edit-submit");
-  //   });
-
-  // }
   module.exports = router;
