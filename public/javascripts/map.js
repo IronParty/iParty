@@ -1,5 +1,44 @@
-
 var markers = [];
+var input = document.getElementById("ricky");
+var map;
+
+function startMap() {
+
+  var myLatLng = {
+      lat: 19.3975835,
+      lng: -99.1713595};
+   map = new google.maps.Map(
+    document.getElementById('map'),
+    {
+      zoom: 15,
+      center: myLatLng
+    }
+  );
+  
+
+  fetch('/company/get-locations')
+  .then(response=>{
+    if(!response.ok) alert('error')
+    return response.json()
+  })
+  .then(locations=>{
+    drawMarkers(locations, map);
+  });
+
+    marker = new google.maps.Marker({
+    map: map,
+    draggable: true,
+    animation: google.maps.Animation.DROP,
+    position:myLatLng,
+    // position: here i would put a an array of all lats and lngs stored in my database
+  });
+  autocomplete(input);
+
+  marker.addListener('click', toggleBounce);
+}
+
+
+
 
 function drawMarkers(locations, map){
   locations.forEach(l=>{
@@ -11,44 +50,6 @@ function drawMarkers(locations, map){
   });
 }
 
-
-function startMap() {
-
-  var myLatLng = {
-      lat: 19.3975835,
-      lng: -99.1713595};
-  var map = new google.maps.Map(
-    document.getElementById('map'),
-    {
-      zoom: 15,
-      center: myLatLng
-    }
-  );
-  
-
-  fetch('/company/get-locations')
-  .then(response=>{
-    if(!response.ok) alert('fallo')
-    return response.json()
-  })
-  .then(locations=>{
-    drawMarkers(locations, map);
-  });
-
-
-
-
-
-  marker = new google.maps.Marker({
-    map: map,
-    draggable: true,
-    animation: google.maps.Animation.DROP,
-    position:myLatLng,
-    // position: here i would put a an array of all lats and lngs stored in my database
-  });
-  marker.addListener('click', toggleBounce);
-}
-
 function toggleBounce() {
   if (marker.getAnimation() !== null) {
     marker.setAnimation(null);
@@ -57,7 +58,6 @@ function toggleBounce() {
   }
 
 }
-var input = document.getElementById("ricky");
 
 function autocomplete(input){
   const dropdown = new google.maps.places.Autocomplete (input);
@@ -71,14 +71,10 @@ function autocomplete(input){
         lat: place.geometry.location.lat(),
         lng: place.geometry.location.lng()
       };
+      console.log(newCenter)
       map.setCenter(newCenter);
   })
-
-}
-autocomplete(input);
-
- 
-
   
+}
 
 startMap()
