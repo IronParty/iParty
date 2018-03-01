@@ -1,11 +1,10 @@
-<h1>Hi <%=user.userName%>!</h1>
-<img width="350" src="<%=user.pic[0]%>" alt="<%=user.userName%>">
+<div class="cont">
+<h1>Hi <%=user.username%>!</h1>
 <p><%=user.email%></p>
 
-<%=user.forEach(function(order){%>
 <hr>
-<p><%=order.userName%></p>
-<span><%=review.date%></span>
-<p><%=review.description%></p>
-<p><a href="../companies/single">add your company</a></p>
-<%})%>
+
+<p><a href="../company/new">add your company</a></p>
+<p><a href="../user/edit">edit your profile</a></p>
+
+</div>
