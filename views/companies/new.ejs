@@ -15,8 +15,22 @@
         <input placeholder="Discription" type="text" name= "description"> <br>
         <input placeholder="Price" type="text" name= "price"> <br>
         <input placeholder="Email" type="text" name= "email"> <br>
+        <select name='category'>
+            <option value="hall">Hall</option>
+            <option value="photography">Photography</option>
+            <option value="music">Music</option>
+            <option value="flowers">Flowers</option>
+            <option value="other">Other</option>
+          </select>
         <input type = "text" placeholder="Link to your calender" type="text" name= "calendar"> <br>
-        <input placeholder="Upload your media below" type="text" name="media"> <br>
+        <section>
+            <h2>Upload your photo</h2>
+            <form action="/upload" method="post" enctype="multipart/form-data">
+              <input type="text" name="name">
+              <input type="file" name="photo">
+              <input type="submit" value="Save">
+            </form>
+          </section>
 
 
         <!-- <input id="search-box-user" type="text" name="where" placeholder="Search your location"> -->
