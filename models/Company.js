@@ -4,8 +4,8 @@ const TYPES    = require('./Company-types');
 
 const companySchema = new Schema({
   title: {type: String},
-  owner: {type: String},
-  media: [{type: String}],
+  owner: { type: Schema.Types.ObjectId, ref: 'User', required: true },
+  media: {type: String},
   description: {type: String},
   price: {type: Number},
   email: {type: String},

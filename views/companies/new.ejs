@@ -10,7 +10,7 @@
 <section class="cont">
     <h2>Please create your profile, <br>
         and Showcase yourself!</h2>
-    <form action="/company/new" method="post">
+    <form action="/company/new" method="post" enctype="multipart/form-data">
         <input placeholder="Title" type="text" name= "title"> <br>
         <input placeholder="Discription" type="text" name= "description"> <br>
         <input placeholder="Price" type="text" name= "price"> <br>
@@ -35,7 +35,7 @@
 
         <!-- <input id="search-box-user" type="text" name="where" placeholder="Search your location"> -->
         <br>
-        <input style ="width:250px" id= "ricky" type="text">
+        <input style ="width:250px" id= "ricky" type="text" name="searchbox">
     <input type="submit" name="" id="ricky">
 
         <input  id="search-box-user-lat" type="text" name="latitude" readonly>
