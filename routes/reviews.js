@@ -7,7 +7,7 @@ router.get('models/Reviews', function(req, res, next) {
 
 
 router.post('models/Reviews', function(req, res, next) {
-  res.send('/');
+  res.render('companies/single');
 });
 
 
