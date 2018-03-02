@@ -17,12 +17,13 @@
       </div>
       <div class="field">
         <label for="price">Price: </label>
-        <input type="text" name="price">
+        <input type="text" name="price" value="<%=company.price%>">
       </div>
       <div class="field">
         <label for="calendar">Calendar link: </label>
-        <input type="text" name="calendar">
+        <input type="text" name="calendar" value="<%=company.schedule%>">
       </div>
+
       <h2>Upload your photo</h2>
       <br>
         <input type="file" name="photo" accept="image/*">

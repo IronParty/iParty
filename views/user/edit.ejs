@@ -4,11 +4,11 @@
     <form action="/user/profile" method="post" id="edit-user-form" class="user-form">
       <div class="field">
         <label for="name">Name: </label>
-        <input type="text" name="name">
+        <input type="text" name="name" value="<%=user.username%>">
       </div>
       <div class="field">
         <label for="email">Email: </label>
-        <input type="text" name="email">
+        <input type="text" name="email" value="<%=user.email%>">
       </div>
       <button id="edit-submit" class="submit-button">Update</button>
     </form>
