@@ -25,42 +25,19 @@ body {
   flex-wrap: wrap; */
 }
 
-
+/* .navbar{
+  display: flex;
+} */
 
 #map {
   height: 500px;
   width: 100%;
  }
 
- body {background: black;
-  position: absolute;
-  top: -30px;
-  left: -10px;
-  overflow: hidden;}
-
-.box {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin-left: -180px;
-  margin-top: -120px;
-  width: 360px;
-  height: 60px;
-  background: transparent;
-  color: white;
-  font-family: arial;
-  font-weight: bold;
-  font-size: 50px;
-  text-shadow: 0 0 2px #fff;
-  animation: fade 2s linear infinite alternate, up 2s linear forwards;
-}
-@keyframes fade {
-  0% {opacity: 0;}
-  50% {opacity: 0;}
-  100% {opacity: 1;}
-}
-@keyframes up {
-  0% {transform: translateY(200px);}
-  50% {transform: translateY(200px);}
-  100% {transform: translateY(0px);}
-}
+ .home{
+   background-image: url("../images/shutterstockparty.jpg") /*no-repeat center center fixed*/;
+  /* -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;*/
+ }
