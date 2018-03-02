@@ -87,14 +87,15 @@ router.get("/edit/:idCompany", ensureLoggedIn("/login"), (req, res) => {
   
 });
 
-router.post("/edit/:idCompany", (req,res)=>{
+router.post("/edit/:idCompany",upload.single("photo"), (req,res)=>{
+  console.log("editando")
   Company.findByIdAndUpdate(req.params.idCompany, {
     title:req.body.title,
     email:req.body.email,
     description:req.body.description,
     price:req.body.price,
     schedule:req.body.calendar,
-    media:req.body.photo,
+    media:`/images/${req.file.filename}`,
   })
   .then(result=>{
     console.log(result)
