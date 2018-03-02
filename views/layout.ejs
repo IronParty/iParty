@@ -11,13 +11,31 @@
 </head>
 
 <body>
-  <nav class = nav-bar>
-    <p>iParty</p>
-    <ul class = login>
-        <li><a href="login">Login</a></li>
-        <li><a href="signup">Signup</a></li>
-        
-      </ul
+  <nav class="navbar navbar-dark bg-dark">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/">iParty</a>
+      </div>
+      <div class=" navbar-colapse">
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <a href="/login">Log in</a>
+          </li>
+          <li>
+            <a href="/signup">Sign up</a>
+          </li>
+          <li>
+            <a href="/user/profile">Profile</a>
+          </li>
+          <li>
+            <a href="/company/all">Companies</a>
+          </li>
+          <li>
+            <a href="/logout">Log out</a>
+          </li>
+        </ul>
+      </div>
+    </div>
   </nav>
   <%- body %>
 </body>

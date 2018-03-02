@@ -6,11 +6,7 @@ router.get('/', function(req, res, next) {
   res.render('index')
 });
 
-router.get('/', function(req, res, next) {
-  Companies.find()
-    .then(respuesta =>  res.render("companies",{companies:respuesta}))
-    .catch(err => res.render("error"));
-});
+
 
 module.exports = router;
 
