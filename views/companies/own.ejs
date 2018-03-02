@@ -1,0 +1,8 @@
+<div class="cont">
+    <%company.forEach(function(ownCompany){%>
+        <h2><%=ownCompany.title%></h2>
+    
+    <p><a href="/company/edit/<%=ownCompany._id%>">edit your companyy</a></p>
+    <%})%>
+    </div>
+

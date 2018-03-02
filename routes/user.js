@@ -9,14 +9,14 @@ router.get("/profile", ensureLoggedIn("/login"), (req, res) => {
       user: req.user
     });
   });
+
   router.post("/profile", ensureLoggedIn("/login"), (req,res)=>{
-    Company.find({_id:req.user._id},{
-      title:req.body.title,
-      description:req.body.description,
-      price:req.body.price,
+    User.findOneAndUpdate({_id:req.user._id},{
+      username:req.body.name,
+      email:req.body.email
     })
     .then(result=>{
-      res.redirect("/company/all");
+      res.redirect("/user/profile");
     })
     .catch(err=>res.send(err))
   });
@@ -28,6 +28,7 @@ router.get("/profile", ensureLoggedIn("/login"), (req, res) => {
   });
 
   router.post("/edit", (req,res)=>{
+    console.log(req.body)
     User.findOneAndUpdate({_id:req.user._id}, {
       username:req.body.name,
       email:req.body.email

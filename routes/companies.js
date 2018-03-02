@@ -44,12 +44,12 @@ router.post('/new', ensureLoggedIn('/login'), upload.single("photo"),(req, res, 
     .catch(err => console.log(err));
 });
 
-router.get('/', (req, res) => {
+router.get('/searchCategory', (req, res) => {
   console.log("entro a buscar con query's")
   console.log(req.query.category)
   Company.find({category:req.query.category})
   .then(companies=>{
-    res.render('company', {companies});
+    res.render('companies/companies', {companies});
   })
   .catch(err=>res.send(err));
 });
@@ -61,7 +61,7 @@ router.get("/all", (req, res)=>{
 });
 
 router.get('/all/:category', (req, res) => {
-  res.render('companies/cathegory/:category', { types: TYPES });
+  res.render('companies/category/:category', { types: TYPES });
 });
 
 router.post('/all/:category', (req, res) => {
@@ -72,9 +72,35 @@ router.get('/own', (req, res)=>{
   console.log('own company')
   Company.find({owner:req.user._id})
   .then(company=>{
-    return res.render("companies/single",{company})
+    console.log(company);
+   res.render("companies/own",{company})
   })
   .catch(err=>res.send(err));
+});
+
+router.get("/edit/:idCompany", ensureLoggedIn("/login"), (req, res) => {
+  Company.findById(req.params.idCompany)
+    .then(result =>{
+      console.log(result)
+      res.render("companies/edit", { user: req.user,company: result})
+})
+  
+});
+
+router.post("/edit/:idCompany", (req,res)=>{
+  Company.findByIdAndUpdate(req.params.idCompany, {
+    title:req.body.title,
+    email:req.body.email,
+    description:req.body.description,
+    price:req.body.price,
+    schedule:req.body.calendar,
+    media:req.body.photo,
+  })
+  .then(result=>{
+    console.log(result)
+    res.redirect("/company/all");
+  })
+  .catch(err=>res.send("error"+err));
 });
 
 router.get('/:id' , (req, res, next) => {

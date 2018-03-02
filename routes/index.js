@@ -8,7 +8,7 @@ router.get('/', function(req, res, next) {
 
 router.get('/', function(req, res, next) {
   Companies.find()
-    .then(respuesta =>  res.redirect("companies",{companies:respuesta}))
+    .then(respuesta =>  res.render("companies",{companies:respuesta}))
     .catch(err => res.render("error"));
 });
 

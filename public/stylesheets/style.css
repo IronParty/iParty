@@ -33,11 +33,3 @@ body {
   height: 500px;
   width: 100%;
  }
-
- .home{
-   background-image: url("../images/shutterstockparty.jpg") /*no-repeat center center fixed*/;
-  /* -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;*/
- }
