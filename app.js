@@ -12,9 +12,16 @@ const session      = require('express-session');
 const MongoStore   = require('connect-mongo')(session);
 
 
+const index = require('./routes/index');
+const userController = require('./routes/user')
+const authController = require('./routes/auth')
+const companiesController = require('./routes/companies')
+const reviewController = require('./routes/reviews')
+const orderController = require('./routes/orders')
+
 const bcrypt     = require('bcrypt');
 
-mongoose.connect(process.env.DATABASE_URL)
+mongoose.connect("mongodb://localhost/iParty")
   .then(console.log(`connected to  ${process.env.DATABASE_URL}`))
 
 const app = express();
@@ -48,12 +55,7 @@ app.use(flash());
 
 require ('./config/passport')(app)
 
-const index = require('./routes/index');
-const userController = require('./routes/user')
-const authController = require('./routes/auth')
-const companiesController = require('./routes/companies')
-const reviewController = require('./routes/reviews')
-const orderController = require('./routes/orders')
+
 
 
 
